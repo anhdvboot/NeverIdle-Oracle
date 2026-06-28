@@ -22,7 +22,33 @@ Kiểm tra NeverIdle có chạy không
 ps aux | grep NeverIdle | grep -v grep
 ```
 
-Sửa ở
+Nếu kiểm tra lỗi -n thì nên bỏ speedteset qua cli
+
+```
+tail -f ~/out
+```
+
+Stop
+
+```
+pkill NeverIdle
+```
+
+Sửa mã: `-cp 0.3` với E21 Micro và `-cp 0.3 -m 5` với Flex
+
+Cài speedtest cli
+
+```
+apt install speedtest-cli -y
+crontab -e
+```
+
+Thêm 
+
+```
+0 */2 * * * speedtest-cli --simple >> ~/speedtest.log 2>&1
+```
+
 
 ```
 /usr/local/bin/bypass_oracle.sh
