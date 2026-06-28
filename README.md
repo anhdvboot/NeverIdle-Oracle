@@ -40,6 +40,8 @@ Cài speedtest cli
 
 ```
 apt install speedtest-cli -y
+```
+```
 crontab -e
 ```
 
@@ -47,6 +49,18 @@ Thêm
 
 ```
 0 */2 * * * speedtest-cli --simple >> ~/speedtest.log 2>&1
+```
+
+Test thử
+
+```
+speedtest-cli --simple
+```
+
+Chạy lệnh
+
+```
+nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &
 ```
 
 
