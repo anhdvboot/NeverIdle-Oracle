@@ -63,6 +63,11 @@ Chạy lệnh
 nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &
 ```
 
+Xem log
+
+```
+tail -f ~/speedtest.log
+```
 
 ```
 /usr/local/bin/bypass_oracle.sh
