@@ -1,5 +1,7 @@
 # Bypass Oracle VM.Standard.E2.1.Micro 
 
+Link gốc: https://gist.githubusercontent.com/Ansen/e45320205faf5786d3282ac880f20bab/raw/onekey-NeverIdle.sh
+
 Nên dùng tham cố -cp 0.3 để luôn chạy 30% nếu vps chưa làm gì
 
 Với E21 Micro
@@ -48,7 +50,8 @@ crontab -e
 Thêm 
 
 ```
-0 */2 * * * speedtest-cli --simple >> ~/speedtest.log 2>&1
+@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+0 */2 * * * /usr/bin/speedtest-cli --simple >> /root/speedtest.log 2>&1
 ```
 
 Test thử
@@ -60,7 +63,7 @@ speedtest-cli --simple
 Chạy lệnh
 
 ```
-nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &
+nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
 ```
 
 Xem log
@@ -79,7 +82,7 @@ sudo wget --no-check-certificate https://raw.githubusercontent.com/anhdvboot/Nev
 chmod +x /usr/local/bin/bypass_oracle.sh
 nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &
 crontab -l > bypass_oracle
-echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &" >> bypass_oracle
+echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &" >> bypass_oracle
 crontab bypass_oracle
 ```
 # Bypass Oracle VM.Standard.A1.Flex
@@ -89,7 +92,7 @@ sudo wget --no-check-certificate https://raw.githubusercontent.com/anhdvboot/Nev
 chmod +x /usr/local/bin/bypass_oracle.sh
 nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &
 crontab -l > bypass_oracle
-echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &" >> bypass_oracle
+echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &" >> bypass_oracle
 crontab bypass_oracle
 ```
 Chỉ sử dụng 5GB RAM (24/24)
@@ -98,9 +101,10 @@ sudo wget --no-check-certificate https://raw.githubusercontent.com/anhdvboot/Nev
 chmod +x /usr/local/bin/bypass_oracle.sh
 nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &
 crontab -l > bypass_oracle
-echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> ./out 2>&1 <&- &" >> bypass_oracle
+echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &" >> bypass_oracle
 crontab bypass_oracle
 ```
+
 
 
 
