@@ -50,7 +50,7 @@ crontab -e
 Thêm 
 
 ```
-@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+@reboot nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
 0 */2 * * * /usr/bin/speedtest-cli --simple >> /root/speedtest.log 2>&1
 ```
 
@@ -63,7 +63,7 @@ speedtest-cli --simple
 Chạy lệnh
 
 ```
-nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
 ```
 
 Xem log
@@ -87,12 +87,12 @@ sudo wget --no-check-certificate https://raw.githubusercontent.com/bibicadotnet/
 chmod +x /usr/local/bin/bypass_oracle.sh
 ```
 ```
-nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
 ```
 
 Chạy crontab -e và dán:
 ```
-echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &" >> /tmp/bypass_oracle
+echo "@reboot nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &" >> /tmp/bypass_oracle
 echo "0 */2 * * * $(which speedtest-cli) --simple >> /root/speedtest.log 2>&1" >> /tmp/bypass_oracle
 ```
 
@@ -107,12 +107,12 @@ sudo wget --no-check-certificate https://raw.githubusercontent.com/bibicadotnet/
 chmod +x /usr/local/bin/bypass_oracle.sh
 ```
 ```
-nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
 ```
 
 Chạy crontab -e và dán:
 ```
-echo "@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &" >> /tmp/bypass_oracle
+echo "@reboot nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &" >> /tmp/bypass_oracle
 echo "0 */2 * * * $(which speedtest-cli) --simple >> /root/speedtest.log 2>&1" >> /tmp/bypass_oracle
 ```
 
@@ -123,10 +123,16 @@ crontab -e
 ```
 
 ````
-@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+@reboot nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
 0 */2 * * * /usr/bin/speedtest-cli --simple >> /root/speedtest.log 2>&1
 ````
 
+Hoặc
+
+```
+@reboot nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+*/3 * * * * /usr/bin/speedtest-cli --simple >> /root/speedtest.log 2>&1
+```
 
 
 
