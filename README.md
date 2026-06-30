@@ -21,7 +21,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 HOME=/root
 
 @reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
-*/2 * * * * /root/speedtest.sh
+0 */1 * * * /root/speedtest.sh
 ```
 
 Nên dùng tham cố -cp 0.3 để luôn chạy 30% nếu vps chưa làm gì
