@@ -56,6 +56,25 @@ tail -f ~/speedtest.log
 
 Sau mỗi 12h sẽ tự sử dụng 20% CPU, tự chạy speedtest 1 lần để sử dụng network
 
+Cách 1:
+
+Tạo file và thực thi:
+
+```
+cat > /usr/local/bin/bypass_oracle.sh << 'EOF'
+#!/bin/bash
+bash <(curl -s -L https://raw.githubusercontent.com/anhdvboot/NeverIdle-Oracle/refs/heads/main/onekey-NeverIdle.sh)
+pkill NeverIdle
+/tmp/NeverIdle -cp 0.3
+EOF
+chmod +x /usr/local/bin/bypass_oracle.sh
+nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+```
+
+Tiếp theo tạo file speedtest và cron ở dưới
+
+Cách 2:
+
 ```
 sudo wget --no-check-certificate https://raw.githubusercontent.com/anhdvboot/NeverIdle-Oracle/refs/heads/main/VM.Standard.E2.1.Micro.sh
 ```
@@ -93,6 +112,25 @@ crontab /tmp/mycron
 ### Trên cấu hình Oracle VM.Standard.A1.Flex
 
 Sau mỗi 12h sẽ tự sử dụng 20% CPU, tự chạy speedtest để sử dụng network, và tự sử dụng 5 GB RAM (24/24)
+
+Cách 1:
+
+Tạo file và thực thi:
+
+```
+cat > /usr/local/bin/bypass_oracle.sh << 'EOF'
+#!/bin/bash
+bash <(curl -s -L https://raw.githubusercontent.com/anhdvboot/NeverIdle-Oracle/refs/heads/main/onekey-NeverIdle.sh)
+pkill NeverIdle
+/tmp/NeverIdle -cp 0.3 -m 5
+EOF
+chmod +x /usr/local/bin/bypass_oracle.sh
+nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+```
+
+Tiếp theo tạo file speedtest và cron ở dưới
+
+Cách 2:
 
 ```
 sudo wget --no-check-certificate https://raw.githubusercontent.com/anhdvboot/NeverIdle-Oracle/refs/heads/main/VM.Standard.A1.Flex.sh
