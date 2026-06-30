@@ -3,6 +3,6 @@ bash <(curl -s -L https://raw.githubusercontent.com/anhdvboot/NeverIdle-Oracle/r
 pkill NeverIdle
 /tmp/NeverIdle -cp 0.3
 
-# Nếu VPS chưa chạy gì thì nên để là -cp và giảm số lần speed test xuống, hiện speedtest lỗ, bỏ luôn -n 2h
+# Nếu VPS chưa chạy gì thì nên để là -cp và giảm số lần speed test xuống, hiện speedtest lỗi, bỏ luôn -n 2h
 # /tmp/NeverIdle -cp 0.3 -n 2h
 # /tmp/NeverIdle -c 12h -cp 0.2 -n 12h
