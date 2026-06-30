@@ -65,6 +65,13 @@ Cài speedtest cli
 ```
 apt install speedtest-cli -y
 ```
+
+Gỡ speedtest cli
+
+```
+apt remove speedtest-cli -y
+```
+
 ```
 crontab -e
 ```
