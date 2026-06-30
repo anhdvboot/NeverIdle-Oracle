@@ -4,13 +4,13 @@ Link gốc: https://gist.githubusercontent.com/Ansen/e45320205faf5786d3282ac880f
 
 Nên dùng tham cố -cp 0.3 để luôn chạy 30% nếu vps chưa làm gì
 
-Với E21 Micro
+Với E21 Micro (bỏ qua -n 2h nếu speedtest lỗi)
 
 ```
 -cp 0.3 -n 2h
 ```
 
-Với Flex
+Với Flex (bỏ qua -n 2h nếu speedtest lỗi)
 
 ```
 -cp 0.3 -m 5 -n 2h
@@ -37,35 +37,6 @@ pkill NeverIdle
 ```
 
 Sửa mã: `-cp 0.3` với E21 Micro và `-cp 0.3 -m 5` với Flex
-
-Cài speedtest cli
-
-```
-apt install speedtest-cli -y
-```
-
-Gỡ speedtest cli
-
-```
-apt remove speedtest-cli -y
-```
-
-```
-crontab -e
-```
-
-Thêm 
-
-```
-@reboot nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
-0 */2 * * * /usr/bin/speedtest-cli --simple >> /root/speedtest.log 2>&1
-```
-
-Test thử
-
-```
-speedtest-cli --simple
-```
 
 Speedtest lỗi thì dùng qua cloudflare, không cần cài speedtest -cli
 
@@ -120,10 +91,17 @@ chmod +x /usr/local/bin/bypass_oracle.sh
 nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
 ```
 
-Chạy crontab -e và dán:
+Tạo cron:
 ```
-echo "@reboot nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &" >> /tmp/bypass_oracle
-echo "0 */2 * * * $(which speedtest-cli) --simple >> /root/speedtest.log 2>&1" >> /tmp/bypass_oracle
+cat > /tmp/mycron << 'EOF'
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOME=/root
+
+@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+0 */1 * * * /root/speedtest.sh
+EOF
+crontab /tmp/mycron
 ```
 
 ### Trên cấu hình Oracle VM.Standard.A1.Flex
@@ -140,22 +118,25 @@ chmod +x /usr/local/bin/bypass_oracle.sh
 nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
 ```
 
-Chạy crontab -e và dán:
+Tạo cron:
 ```
-echo "@reboot nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &" >> /tmp/bypass_oracle
-echo "0 */2 * * * $(which speedtest-cli) --simple >> /root/speedtest.log 2>&1" >> /tmp/bypass_oracle
+cat > /tmp/mycron << 'EOF'
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOME=/root
+
+@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+0 */1 * * * /root/speedtest.sh
+EOF
+crontab /tmp/mycron
 ```
 
-Kiểm tra xem cron chạy chưa, chưa thì thêm vào
+Kiểm tra xem cron đúng chưa
 
 ```
-crontab -e
+crontab -l
 ```
 
-````
-@reboot nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
-0 */2 * * * /usr/bin/speedtest-cli --simple >> /root/speedtest.log 2>&1
-````
 
 Hoặc
 
