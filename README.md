@@ -2,6 +2,28 @@
 
 Link gốc: https://gist.githubusercontent.com/Ansen/e45320205faf5786d3282ac880f20bab/raw/onekey-NeverIdle.sh
 
+Speedtest lỗi thì dùng qua cloudflare, không cần cài speedtest -cli
+
+```
+cat > /root/speedtest.sh << 'EOF'
+#!/bin/bash
+SPEED=$(curl -o /dev/null -s -w "%{speed_download}" https://speed.cloudflare.com/__down?bytes=50000000)
+echo "$(date '+%Y-%m-%d %H:%M:%S') - Speed: $(echo $SPEED | awk '{printf "%.2f", $1/125000}') Mbit/s" >> /root/speedtest.log
+EOF
+chmod +x /root/speedtest.sh
+```
+
+Nội dung crontab -e
+
+```
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOME=/root
+
+@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+*/2 * * * * /root/speedtest.sh
+```
+
 Nên dùng tham cố -cp 0.3 để luôn chạy 30% nếu vps chưa làm gì
 
 Với E21 Micro
@@ -59,6 +81,29 @@ Test thử
 ```
 speedtest-cli --simple
 ```
+
+Speedtest lỗi thì dùng qua cloudflare, không cần cài speedtest -cli
+
+```
+cat > /root/speedtest.sh << 'EOF'
+#!/bin/bash
+SPEED=$(curl -o /dev/null -s -w "%{speed_download}" https://speed.cloudflare.com/__down?bytes=50000000)
+echo "$(date '+%Y-%m-%d %H:%M:%S') - Speed: $(echo $SPEED | awk '{printf "%.2f", $1/125000}') Mbit/s" >> /root/speedtest.log
+EOF
+chmod +x /root/speedtest.sh
+```
+
+Nội dung crontab -e
+
+```
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOME=/root
+
+@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+*/2 * * * * /root/speedtest.sh
+```
+
 
 Chạy lệnh
 
