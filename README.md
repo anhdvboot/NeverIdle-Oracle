@@ -138,8 +138,12 @@ crontab -l
 Hoặc
 
 ```
-@reboot nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
-*/3 * * * * /usr/bin/speedtest-cli --simple >> /root/speedtest.log 2>&1
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOME=/root
+
+@reboot nohup /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
+*/2 * * * * /root/speedtest.sh
 ```
 
 
