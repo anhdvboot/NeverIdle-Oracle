@@ -57,7 +57,7 @@ tail -f ~/speedtest.log
 Sau mỗi 12h sẽ tự sử dụng 20% CPU, tự chạy speedtest 1 lần để sử dụng network
 
 ```
-sudo wget --no-check-certificate https://raw.githubusercontent.com/bibicadotnet/NeverIdle-Oracle/master/VM.Standard.E2.1.Micro.sh -O /usr/local/bin/bypass_oracle.sh
+sudo wget --no-check-certificate https://raw.githubusercontent.com/anhdvboot/NeverIdle-Oracle/refs/heads/main/VM.Standard.E2.1.Micro.sh
 ```
 ```
 chmod +x /usr/local/bin/bypass_oracle.sh
@@ -95,7 +95,7 @@ crontab /tmp/mycron
 Sau mỗi 12h sẽ tự sử dụng 20% CPU, tự chạy speedtest để sử dụng network, và tự sử dụng 5 GB RAM (24/24)
 
 ```
-sudo wget --no-check-certificate https://raw.githubusercontent.com/bibicadotnet/NeverIdle-Oracle/master/VM.Standard.A1.Flex.sh -O /usr/local/bin/bypass_oracle.sh
+sudo wget --no-check-certificate https://raw.githubusercontent.com/anhdvboot/NeverIdle-Oracle/refs/heads/main/VM.Standard.A1.Flex.sh
 ```
 ```
 chmod +x /usr/local/bin/bypass_oracle.sh
