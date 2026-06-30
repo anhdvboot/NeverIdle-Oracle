@@ -66,6 +66,9 @@ cat > /usr/local/bin/bypass_oracle.sh << 'EOF'
 bash <(curl -s -L https://raw.githubusercontent.com/anhdvboot/NeverIdle-Oracle/refs/heads/main/onekey-NeverIdle.sh)
 pkill NeverIdle
 /tmp/NeverIdle -cp 0.3
+# Nếu VPS chưa chạy gì thì nên để là -cp và giảm số lần speed test xuống, hiện speedtest lỗi, bỏ luôn -n 2h
+# /tmp/NeverIdle -cp 0.3
+# /tmp/NeverIdle -c 12h -cp 0.2 -n 12h
 EOF
 chmod +x /usr/local/bin/bypass_oracle.sh
 nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
@@ -123,6 +126,9 @@ cat > /usr/local/bin/bypass_oracle.sh << 'EOF'
 bash <(curl -s -L https://raw.githubusercontent.com/anhdvboot/NeverIdle-Oracle/refs/heads/main/onekey-NeverIdle.sh)
 pkill NeverIdle
 /tmp/NeverIdle -cp 0.3 -m 5
+# Nếu VPS chưa chạy gì thì nên để là -cp và giảm số lần speed test xuống, hiện speedtest lỗi, bỏ luôn -n 2h
+# /tmp/NeverIdle -cp 0.3 -m 5
+# /tmp/NeverIdle -c 12h -cp 0.2 -m 5 -n 12h
 EOF
 chmod +x /usr/local/bin/bypass_oracle.sh
 nohup /bin/bash /usr/local/bin/bypass_oracle.sh >> /root/out 2>&1 <&- &
